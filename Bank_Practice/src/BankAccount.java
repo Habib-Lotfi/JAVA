@@ -2,10 +2,22 @@ public class BankAccount {
     long accountNumber;
     String name;
     float balance;
-    long minBlance = 0; // minimum required blance for account from Bank policy. By default is 0!
+    long minBlance = 0; // minimum required balance for account from Bank policy. By default is 0!
 
     float getBalance() {
         return this.balance;
+    }
+///////OverLoading for initAccount Method
+    void initAccount() {
+        this.accountNumber = 111L; // Default Account Number!
+        this.name = "XXXXXXX";// Default Name of the Account!
+        this.balance = 0.0f; //Default Balance for Opening Account!
+    }
+
+    void initAccount(long newAccountNumber, String name, float openingBalance) {
+        this.accountNumber = newAccountNumber;
+        this.name = name;
+        this.balance = openingBalance;
     }
 
     void deposit(float amount) {
@@ -37,6 +49,7 @@ public class BankAccount {
     }
 
     void printAccount() {
+        System.out.println("**************************************");
         System.out.println("\nAccount Holder Name: " + name);
         System.out.println("Account Number is: " + accountNumber);
         System.out.println("Current Balance of the account is: $" + balance);
