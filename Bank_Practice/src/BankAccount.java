@@ -1,32 +1,54 @@
-public class BankAccount {
-    long accountNumber;
-    String name;
-    float balance;
-    long minBlance = 0; // minimum required balance for account from Bank policy. By default is 0!
 
-    float getBalance() {
+public class BankAccount {
+    private long accountNumber;
+    private String name;
+    private float balance;
+    private long minBlance = 0; // minimum required balance for account from Bank policy. By default is 0!
+
+    public long getAccountNumber() {
+        return this.accountNumber;
+    }
+
+    public void setAccountNumber(long accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getBalance() {
         return this.balance;
     }
-///////OverLoading for initAccount Method
-    void initAccount() {
-        this.accountNumber = 111L; // Default Account Number!
-        this.name = "XXXXXXX";// Default Name of the Account!
-        this.balance = 0.0f; //Default Balance for Opening Account!
+
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 
-    void initAccount(long newAccountNumber, String name, float openingBalance) {
+    /////// OverLoading for initAccount Method
+    public void initAccount() {
+        this.accountNumber = 111L; // Default Account Number!
+        this.name = "XXXXXXX";// Default Name of the Account!
+        this.balance = 0.0f; // Default Balance for Opening Account!
+    }
+
+    public void initAccount(long newAccountNumber, String name, float openingBalance) {
         this.accountNumber = newAccountNumber;
         this.name = name;
         this.balance = openingBalance;
     }
 
-    void deposit(float amount) {
+    public void deposit(float amount) {
         balance += amount;
         System.out.println("\nThe amount of : $" + amount);
         System.out.println("is SUCCESSFULLY deposited.");
     }
 
-    boolean withdraw(float amount) {
+    public boolean withdraw(float amount) {
         if ((balance - minBlance) >= amount) {
             balance -= amount;
             System.out.println("\nWithdraw successfully completed for of amount: $" + amount);
@@ -37,7 +59,7 @@ public class BankAccount {
         }
     }
 
-    void transfer(BankAccount desAccount, float amount) {
+    public void transfer(BankAccount desAccount, float amount) {
         if (withdraw(amount)) {
             desAccount.deposit(amount);
             System.out.println("Transfer successfully completed for amount: $" + amount);
@@ -48,10 +70,11 @@ public class BankAccount {
         }
     }
 
-    void printAccount() {
+    public void printAccount() {
         System.out.println("**************************************");
         System.out.println("\nAccount Holder Name: " + name);
         System.out.println("Account Number is: " + accountNumber);
-        System.out.println("Current Balance of the account is: $" + balance);
+        System.out.println("Total Balance of the account is: $" + balance);
+        System.out.println("Current Available Balance of the account is: $" + (balance - minBlance));
     }
 }

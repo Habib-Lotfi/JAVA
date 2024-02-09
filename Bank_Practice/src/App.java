@@ -3,7 +3,7 @@ public class App {
 
         BankAccount bankAccount1 = new BankAccount();
         BankAccount bankAccount2 = new BankAccount();
-        
+
         // bankAccount1.name = "Alice";
         // bankAccount1.balance = 50000F;
         // bankAccount1.accountNumber = 1L;
@@ -24,6 +24,10 @@ public class App {
         bankAccount1.printAccount();
         bankAccount2.printAccount();
 
-       
+        // Applying geter and setter
+        float totalMoney = bankAccount1.getBalance() + bankAccount2.getBalance();
+        System.out.println("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("Total money in the Bank is: $" + totalMoney);
+
     }
 }
