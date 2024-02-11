@@ -5,6 +5,17 @@ public class BankAccount {
     private float balance;
     private long minBlance = 0; // minimum required balance for account from Bank policy. By default is 0!
 
+    // Empty Constructor
+    public BankAccount() {
+    }
+
+    // Constructor
+    public BankAccount(long accountNumber, String name, float balance) {
+        this.accountNumber = accountNumber;
+        this.name = name;
+        this.balance = balance;
+    }
+
     public long getAccountNumber() {
         return this.accountNumber;
     }

@@ -1,13 +1,19 @@
 public class App {
     public static void main(String[] args) throws Exception {
 
-        BankAccount bankAccount1 = new BankAccount();
+        // BankAccount bankAccount1 = new BankAccount();
+        // instead of assigning a empty bankAccount constructor then use the 1)
+        // initAccount,
+        // we applied the proper constructor!
+        BankAccount bankAccount1 = new BankAccount(1L, "Alice", 50000F);
         BankAccount bankAccount2 = new BankAccount();
 
         // bankAccount1.name = "Alice";
         // bankAccount1.balance = 50000F;
         // bankAccount1.accountNumber = 1L;
-        bankAccount1.initAccount(1L, "Alice", 50000F);
+
+        // 1) bankAccount1.initAccount(1L, "Alice", 50000F);
+
         bankAccount2.initAccount(2L, "Bob", 30000F);
 
         bankAccount1.deposit(1500F);// deposit method is OK!
