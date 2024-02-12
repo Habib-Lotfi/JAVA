@@ -1,10 +1,10 @@
-
 public class BankAccount {
     private long accountNumber;
     private String name;
     private float balance;
-    private long minBlance = 0; // minimum required balance for account from Bank policy. By default is 0!
+    private long minBalance = 0; // minimum required balance for account from Bank policy. By default is 0!
 
+    // Applying Overloading
     // Empty Constructor
     public BankAccount() {
     }
@@ -40,6 +40,7 @@ public class BankAccount {
         this.balance = balance;
     }
 
+
     /////// OverLoading for initAccount Method
     public void initAccount() {
         this.accountNumber = 111L; // Default Account Number!
@@ -60,7 +61,7 @@ public class BankAccount {
     }
 
     public boolean withdraw(float amount) {
-        if ((balance - minBlance) >= amount) {
+        if ((balance - minBalance) >= amount) {
             balance -= amount;
             System.out.println("\nWithdraw successfully completed for of amount: $" + amount);
             return true;
@@ -86,6 +87,6 @@ public class BankAccount {
         System.out.println("\nAccount Holder Name: " + name);
         System.out.println("Account Number is: " + accountNumber);
         System.out.println("Total Balance of the account is: $" + balance);
-        System.out.println("Current Available Balance of the account is: $" + (balance - minBlance));
+        System.out.println("Current Available Balance of the account is: $" + (balance - minBalance));
     }
 }
