@@ -1,11 +1,12 @@
 
-// import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+// import java.time.Duration;
+// import java.time.Month;
 
 // Date Format Operations
 public class TimeManager {
@@ -21,8 +22,12 @@ public class TimeManager {
     private LocalDate currentDate = LocalDate.now(zoneIdNewYork);
     private LocalTime dayTime = LocalTime.now(zoneIdNewYork);
     private boolean dateInfoFlag = false;
+    ///////////////////////////
+    // private LocalDateTime tmp = LocalDateTime.of(2016, Month.JUNE, 1,20,30);
+    // = LocalDateTime.of(yyyy, MM, DD,H,Min);
+    ///////////////////////////
 
-    // Printing Currenrt Time
+    // Printing Current Time
     public void printCurrentTime() {
         long hour = dayTime.getHour();
         long min = dayTime.getMinute();
@@ -68,11 +73,12 @@ public class TimeManager {
     }
 
     // Printing Current Date Information
-    public void dateInfo() {
+    public LocalDate currentDateInfo() {
         System.out.println("\n################################");
         System.out.println("Today is: " + currentDate);
         dateInfoFlag = true;
         printCurrentTime();
+        return currentDate;
     }
 
     // Printing Date of Opening Account
@@ -98,13 +104,13 @@ public class TimeManager {
         yearPeriod = startDate.until(currentDate, ChronoUnit.YEARS);
         monthPeriod = startDate.until(currentDate, ChronoUnit.MONTHS);
         dayPeriod = startDate.until(currentDate, ChronoUnit.DAYS);
-        System.out
-                .println("Total Year/s: " + yearPeriod + "\nTotal Month/s: " + monthPeriod + "\nTotal Day/s: "
-                        + dayPeriod);
+        System.out.println("Total Year/s: " + yearPeriod
+                + "\nTotal Month/s: " + monthPeriod
+                + "\nTotal Day/s: " + dayPeriod);
     }
 
     public void printAllTimeInfo() {
-        dateInfo();
+        currentDateInfo();
         openingAccountDateInfo();
         completePeriodTime();
         individualYYMMDD();

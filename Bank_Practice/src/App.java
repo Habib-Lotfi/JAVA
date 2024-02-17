@@ -7,7 +7,7 @@ public class App {
         // we applied the proper constructor!
         TimeManager timeManager = new TimeManager();
 
-        BankAccount bankAccount1 = new BankAccount(1L, "Alice", 50000F);
+        BankAccount bankAccount1 = new BankAccount(1L, "Alice", 50000F, AccountType.Deposit);
         BankAccount bankAccount2 = new BankAccount();
 
         // bankAccount1.name = "Alice";
@@ -16,7 +16,7 @@ public class App {
 
         // 1) bankAccount1.initAccount(1L, "Alice", 50000F);
 
-        bankAccount2.initAccount(2L, "Bob", 30000F);
+        bankAccount2.initAccount(2L, "Bob", 30000F, AccountType.Cheque);
 
         bankAccount1.deposit(1500F);// deposit method is OK!
         bankAccount1.printAccount();// printAccount method is OK!
@@ -34,12 +34,13 @@ public class App {
         bankAccount1.printAccount();
         bankAccount2.printAccount();
 
-        
         // Applying geter and setter
         float totalMoney = bankAccount1.getBalance() + bankAccount2.getBalance();
         System.out.println("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         System.out.println("Total money in the Bank is: $" + totalMoney);
-        
+
+        System.out.println("####Total Number of Accounts is: " + BankAccount.getTotalAccountNumber());
+
         timeManager.printAllTimeInfo();
     }
 }
