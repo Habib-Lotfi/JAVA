@@ -4,7 +4,7 @@ public class BankAccount {
     private static long totalAccountNumber = 0;
     private long accountNumber;
     private String name;
-    private float balance;
+    protected float balance;
     private long minBalance = 0; // minimum required balance for account from Bank policy. By default is 0!
     private AccountType accountType;
     private String[] weekString = new String[EnumDays.values().length];
@@ -139,17 +139,25 @@ public class BankAccount {
         }
     }
 
+    // Applying FORMAT String to printing output.
     public void printAvailableAccountTypes() {
         String accountTypeString;
         String accountTypeDefinition;
+
+        // Create an instance of AccountDefinition
         AccountDefinition accountDefinition = new AccountDefinition();
         System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
         System.out.println(String.format("%-35s", "   Account Type") + "Account Definition");
 
         for (int i = 0; i < AccountType.values().length; i++) {
+
+            // Get the string representation of each AccountType enum value
             accountTypeString = AccountType.values()[i].toString();
+
+            // Access the definitions from the instance of AccountDefinition
             accountTypeDefinition = accountDefinition.getAccountTypeDefinition()[i];
-            // Properly formatted string: "(index) AccountType: Definition"
+
+            // formatted string: "(index) AccountType: Definition"
             System.out.println(String.format("%d) %-20s: %s", i + 1, accountTypeString, accountTypeDefinition));
         }
     }
@@ -164,5 +172,15 @@ public class BankAccount {
         printingWeekDays();
         printAvailableAccountTypes();
         System.out.println("\n###Total Account number is: " + totalAccountNumber);
+    }
+
+    // Applying the STATIC method to access this instance anywhere without making
+    // any instance.
+    public static void printWelcomeMessage() {
+        System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println(String.format("%-15s", "      ") + "BANK OF BEST BENEFITS");
+        System.out.println(String.format("%-15s", "   ") + "Welcome Message");
+        System.out.println(String.format("%-35s", "   Mr/Ms") + "Welcome to our bank. ");
+        System.out.println(String.format("%-35s", "   Enjoy working with us!") + " ");
     }
 }
