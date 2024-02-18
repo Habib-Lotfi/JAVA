@@ -4,8 +4,10 @@ import java.time.temporal.ChronoUnit;
 
 public class InterestOfAccounts extends BankAccount {
     private float accountInterest;
-    private float dayPercentOfInterest = 4.00f; // Bank Policy: percentage of INTEREST
+    private float dayPercentOfInterestBasedMonthlyShowing = 4.00f; // Bank Policy: percentage of INTEREST
     private float monthPercentOfInterest = 5.50f; // Bank Policy: percentage of INTEREST
+    //converting from monthly base showing to daily INTEREST form.
+    private float dayPercentOfInterest = dayPercentOfInterestBasedMonthlyShowing/30; // Bank Policy: percentage of INTEREST
     private int monthPolicy = 6; // Bank Policy: number of the months to calculate INTEREST of considered account
     private int dayPolicy = 90; // Bank Policy: number of the days to calculate INTEREST of considered account
     private float interestReduction = 10.00f;// Bank Policy: percentage of INTEREST will be reduced
@@ -25,9 +27,10 @@ public class InterestOfAccounts extends BankAccount {
         stringToLocalDateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         // this.percentOfInterest = percentOfInterest;
         this.openingAccountDate = LocalDateTime.parse(openingAccountDate, stringToLocalDateFormatter);
+        calculatingDurationMonths();
     }
 
-    private void calculatinDurationofMonths() {
+    private void calculatingDurationMonths() {
         dayPeriod = openingAccountDate.until(currentDate, ChronoUnit.DAYS);
         monthPeriod = openingAccountDate.until(currentDate, ChronoUnit.MONTHS);
     }
@@ -75,5 +78,16 @@ public class InterestOfAccounts extends BankAccount {
         System.out.println("Total Months:" + monthPeriod);
         System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         return accountInterest;
+    }
+
+    @Override
+    public void printAccount() {
+        System.out.println("**************************************");
+        System.out.println("\nAccount Holder Name: " + getName());
+        System.out.println("\nAccount Type: " + getAccountNumber());
+        System.out.println("Account Number is: " +getAccountType());
+        System.out.println("Total Balance of the account is: $" + balance);
+        System.out.println("The amount of the INTEREST of account is: $" + accountInterest);
+        System.out.println("Since: "+openingAccountDate);
     }
 }

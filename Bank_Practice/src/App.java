@@ -46,8 +46,11 @@ public class App {
 
         BankAccount.printWelcomeMessage();
 
-        InterestOfAccounts depositAccount = new InterestOfAccounts(1L, "Joy", 150000F, 5.5F,
+        InterestOfAccounts interestOfAccount = new InterestOfAccounts(1L, "Joy", 150000F, 5.5F,
                 "2020-01-15 10:00");
-        System.out.println("your benefit is: $" + depositAccount.benefitOfDailyDepositAccount());
+        System.out.println("your benefit is: $" + interestOfAccount.benefitOfDailyDepositAccount());
+
+        interestOfAccount.printAccount();
     }
+
 }
