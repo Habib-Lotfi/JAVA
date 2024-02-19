@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 
 public class BankAccount {
+    private static final String bankName = "FOR EVER BANK";// Applying a FINAL & STATIC variable
     private static long totalAccountNumber = 0;
     private long accountNumber;
     private String name;
@@ -163,6 +164,7 @@ public class BankAccount {
     }
 
     public void printAccount() {
+        System.out.println("~~~~~~~~~~~~~~" + bankName + "~~~~~~~~~~~~~~");
         System.out.println("**************************************");
         System.out.println("\nAccount Holder Name: " + name);
         System.out.println("\nAccount Type: " + accountType);
@@ -177,6 +179,7 @@ public class BankAccount {
     // Applying the STATIC method to access this instance anywhere without making
     // any instance.
     public static void printWelcomeMessage() {
+        System.out.println("~~~~~~~~~~~~~~" + bankName + "~~~~~~~~~~~~~~");
         System.out.println("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         System.out.println(String.format("%-15s", "      ") + "BANK OF BEST BENEFITS");
         System.out.println(String.format("%-15s", "   ") + "Welcome Message");
