@@ -1,10 +1,11 @@
 import java.time.LocalDate;
 
-public class BankAccount {
+public class BankAccount extends Accounts {
     private static final String bankName = "FOR EVER BANK";// Applying a FINAL & STATIC variable
     private static long totalAccountNumber = 0;
-    private long accountNumber;
-    private String name;
+    // Getting from the Accounts Class using ABSTRACT method
+    // private long accountNumber;
+    // private String name;
     protected float balance;
     private long minBalance = 0; // minimum required balance for account from Bank policy. By default is 0!
     private AccountType accountType;
@@ -20,14 +21,16 @@ public class BankAccount {
     // Applying Overloading on Constructor
     // Empty Constructor
     public BankAccount() {
+        super("", 0L);
         totalAccountNumber++;
     }
 
     // Constructor
     public BankAccount(long accountNumber, String name, float balance, AccountType accountType) {
+        super(name, accountNumber);
         totalAccountNumber++;
-        this.accountNumber = accountNumber;
-        this.name = name;
+        // this.accountNumber = accountNumber;
+        // this.name = name;
         this.balance = balance;
         this.accountType = accountType;
         this.dateTime = timeManager.currentDateInfo();
@@ -48,28 +51,28 @@ public class BankAccount {
             System.out.println(day);
         }
 
-        System.out.println("Weekend (is offday):" + offDay);
+        System.out.println("Weekend (is off day):" + offDay);
     }
 
     public static long getTotalAccountNumber() {
         return totalAccountNumber;
     }
 
-    public long getAccountNumber() {
-        return this.accountNumber;
-    }
+    // public long getAccountNumber() {
+    // return this.accountNumber;
+    // }
 
-    public void setAccountNumber(long accountNumber) {
-        this.accountNumber = accountNumber;
-    }
+    // public void setAccountNumber(long accountNumber) {
+    // this.accountNumber = accountNumber;
+    // }
 
-    public String getName() {
-        return this.name;
-    }
+    // public String getName() {
+    // return this.name;
+    // }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    // public void setName(String name) {
+    // this.name = name;
+    // }
 
     public float getBalance() {
         return this.balance;
@@ -98,16 +101,16 @@ public class BankAccount {
     /////// OverLoading for initAccount Method
     public void initAccount() {
         totalAccountNumber++;
-        this.accountNumber = 111L; // Default Account Number!
-        this.name = "XXXXXXX";// Default Name of the Account!
+        setAccountNumber(111L);// Default Account Number!
+        setName("XXXXXXX");// Default Name of the Account!
         this.balance = 0.0f; // Default Balance for Opening Account!
     }
 
     public void initAccount(long newAccountNumber, String name, float openingBalance,
             AccountType accountType) {
         totalAccountNumber++;
-        this.accountNumber = newAccountNumber;
-        this.name = name;
+        setAccountNumber(newAccountNumber);
+        setName(name);
         this.balance = openingBalance;
         this.accountType = accountType;
     }
@@ -133,8 +136,8 @@ public class BankAccount {
         if (withdraw(amount)) {
             desAccount.deposit(amount);
             System.out.println("Transfer successfully completed for amount: $" + amount);
-            System.out.println("From Bank Account Number: " + accountNumber + " to Bank Account Number: "
-                    + desAccount.accountNumber);
+            System.out.println("From Bank Account Number: " + getAccountNumber() + " to Bank Account Number: "
+                    + desAccount.getAccountNumber());
         } else {
             System.out.println("Error: Transfer failed!!!");
         }
@@ -166,14 +169,16 @@ public class BankAccount {
     public void printAccount() {
         System.out.println("~~~~~~~~~~~~~~" + bankName + "~~~~~~~~~~~~~~");
         System.out.println("**************************************");
-        System.out.println("\nAccount Holder Name: " + name);
+        System.out.println("\nAccount Holder Name: " + getName());
         System.out.println("\nAccount Type: " + accountType);
-        System.out.println("Account Number is: " + accountNumber);
+        System.out.println("Account Number is: " + getAccountNumber());
         System.out.println("Total Balance of the account is: $" + balance);
         System.out.println("Current Available Balance of the account is: $" + (balance - minBalance));
         printingWeekDays();
         printAvailableAccountTypes();
         System.out.println("\n###Total Account number is: " + totalAccountNumber);
+        System.out.println("|||||||||||  Your default password is:  " + getPassword() + "  ||||||||||||");
+
     }
 
     // Applying the STATIC method to access this instance anywhere without making
@@ -185,5 +190,18 @@ public class BankAccount {
         System.out.println(String.format("%-15s", "   ") + "Welcome Message");
         System.out.println(String.format("%-35s", "   Mr/Ms") + "Welcome to our bank. ");
         System.out.println(String.format("%-35s", "   Enjoy working with us!") + " ");
+    }
+
+    @Override
+    public void display() {
+        printWelcomeMessage();
+    }
+
+    @Override
+    public void changePassword() {
+        System.out.println("|||||||||||||| your old password was:    " + getPassword());
+        String newPassword = passwordMaker();
+        setPassword(newPassword);
+        System.out.println("\n|||||||||||||| your new password is:    " + getPassword());
     }
 }

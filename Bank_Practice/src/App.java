@@ -51,6 +51,18 @@ public class App {
         System.out.println("your benefit is: $" + interestOfAccount.benefitOfDailyDepositAccount());
 
         interestOfAccount.printAccount();
+        // Applying accessing to a override method in child classes from a ABSTRACT
+        // parent.
+        bankAccount1.changePassword();
+
+        // Wrong! We can not make a instance of Accounts class (from its CONTRACTOR)as a
+        // ABSTRACT class.
+        // Accounts childAccounts = new Accounts(3333L,"James");???
+        // we can make an instance of its child class (ABSTRACTION)
+        Accounts chillAccount = bankAccount1;
+
+        chillAccount.changePassword();
+
     }
 
 }
