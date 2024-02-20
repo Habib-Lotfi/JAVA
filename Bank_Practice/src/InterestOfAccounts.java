@@ -9,8 +9,9 @@ public class InterestOfAccounts extends BankAccount {
     // converting from monthly base showing to daily INTEREST form.
     private float dayPercentOfInterest = dayPercentOfInterestBasedMonthlyShowing / 30; // Bank Policy: percentage of
                                                                                        // INTEREST
-    private int monthPolicy = 6; // Bank Policy: number of the months to calculate INTEREST of considered account
-    private int dayPolicy = 90; // Bank Policy: number of the days to calculate INTEREST of considered account
+    private int monthPolicy = 6; /// Bank Policy: number of the months to calculate INTEREST of considered
+                                 /// account
+    private int dayPolicy = 90; /// Bank Policy: number of the days to calculate INTEREST of considered account
     private float interestReduction = 10.00f;// Bank Policy: percentage of INTEREST will be reduced
     private long monthPeriod;
     private long dayPeriod;

@@ -37,7 +37,7 @@ public class App {
 
         // Applying geter and setter
         float totalMoney = bankAccount1.getBalance() + bankAccount2.getBalance();
-        System.out.println("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        System.out.println("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         System.out.println("Total money in the Bank is: $" + totalMoney);
 
         System.out.println("####Total Number of Accounts is: " + BankAccount.getTotalAccountNumber());
