@@ -59,9 +59,24 @@ public class App {
         // ABSTRACT class.
         // Accounts childAccounts = new Accounts(3333L,"James");???
         // we can make an instance of its child class (ABSTRACTION)
+
+        // DOWNCASTING to parent class
+        //Be careful!!! Downcasting throw exception, SOMETIMES!
         Accounts chillAccount = bankAccount1;
 
         chillAccount.changePassword();
+        chillAccount.display();
+
+        StudentAccount studentAccount = new StudentAccount("Daniel", 112233L, 2021);
+        studentAccount.display();
+
+        // UPCASTING to child class!!!
+        // In UPCASTING mode parent instance does not access to all child methods in the
+        // class!
+        // Only it has access to OVERRIDE child methods!
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        Accounts childAccounts = studentAccount;
+        childAccounts.display();// it will use 'display method' from child class (StudentAccount class)
 
     }
 
