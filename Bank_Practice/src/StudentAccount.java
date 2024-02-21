@@ -1,4 +1,4 @@
-public class StudentAccount extends Accounts {
+public class StudentAccount extends Accounts implements EditAccount {
     private int entryYear;
 
     public StudentAccount() {
@@ -10,7 +10,9 @@ public class StudentAccount extends Accounts {
         this.entryYear = entryYear;
     }
 
-    public int getEntryYear() {
+    // entryYear is an 'int' value but it converts to an 'Integer' value
+    // automatically!(inbuilt cascading)
+    public Integer getEntryYear() {
         return this.entryYear;
     }
 
@@ -31,6 +33,16 @@ public class StudentAccount extends Accounts {
     public void changePassword() {
         // we can have a simple password rules for the student account
         setPassword(passwordMaker());
+    }
+
+    @Override
+    public void changeToNewName(String newName) {
+        setName(newName);
+    }
+
+    @Override
+    public String getCurrentName() {
+        return getName();
     }
 
 }

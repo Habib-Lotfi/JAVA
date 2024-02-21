@@ -61,7 +61,7 @@ public class App {
         // we can make an instance of its child class (ABSTRACTION)
 
         // DOWNCASTING to parent class
-        //Be careful!!! Downcasting throw exception, SOMETIMES!
+        // Be careful!!! Downcasting throw exception, SOMETIMES!
         Accounts chillAccount = bankAccount1;
 
         chillAccount.changePassword();
@@ -78,10 +78,16 @@ public class App {
         Accounts childAccounts = studentAccount;
         childAccounts.display();// it will use 'display method' from child class (StudentAccount class)
 
-        EditProfile editAccount = new EditProfile();
+        EditProfile<String> editAccount = new EditProfile<>("name");
         editAccount.Edit(bankAccount1);
         bankAccount1.printAccount();
 
+        // Checking Pattern
+        CheckingPatterns checkPattern = new CheckingPatterns();
+        checkPattern.display();
+        checkPattern.patternMatchChecking();
+        Character[] genericArray = {'I','t',' ','i','s',' ','a',' ','G','E','N','E','R','I','C',' ','a','r','r','a','y'};
+        CheckingPatterns.printArray(genericArray);
     }
 
 }
