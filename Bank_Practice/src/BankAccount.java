@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class BankAccount extends Accounts {
+public class BankAccount extends Accounts implements EditAccount {
     private static final String bankName = "FOR EVER BANK";// Applying a FINAL & STATIC variable
     private static long totalAccountNumber = 0;
     // Getting from the Accounts Class using ABSTRACT method
@@ -203,5 +203,15 @@ public class BankAccount extends Accounts {
         String newPassword = passwordMaker();
         setPassword(newPassword);
         System.out.println("\n|||||||||||||| your new password is:    " + getPassword());
+    }
+
+    @Override
+    public void changeToNewName(String newName) {
+        setName(newName);
+    }
+
+    @Override
+    public String getCurrentName() {
+        return getName();
     }
 }

@@ -78,6 +78,10 @@ public class App {
         Accounts childAccounts = studentAccount;
         childAccounts.display();// it will use 'display method' from child class (StudentAccount class)
 
+        EditProfile editAccount = new EditProfile();
+        editAccount.Edit(bankAccount1);
+        bankAccount1.printAccount();
+
     }
 
 }
