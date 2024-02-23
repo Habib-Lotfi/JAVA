@@ -1,3 +1,4 @@
+import java.util.Timer;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -95,17 +96,29 @@ public class App {
 
         arrayListClass.dynamicArrayListAccount();
 
+        /// Testing a inner class
+        // Create an instance of the outer class
+        OuterAndInnerClassTesting outerInstance = new OuterAndInnerClassTesting();
 
-        ///Testing a inner class
-         // Create an instance of the outer class
-         OuterAndInnerClassTesting outerInstance = new OuterAndInnerClassTesting();
-        
-         // Use the outer class instance to create an instance of the inner class
-         OuterAndInnerClassTesting.TestingInnerClass innerInstance = outerInstance.new TestingInnerClass();
-         
-         // Call methods on the outer and inner instances
-         outerInstance.display();
-         innerInstance.displayInfo();
+        // Use the outer class instance to create an instance of the inner class
+        OuterAndInnerClassTesting.TestingInnerClass innerInstance = outerInstance.new TestingInnerClass();
+
+        // Call methods on the outer and inner instances
+        outerInstance.display();
+        innerInstance.displayInfo();
+
+        // TimeTask method
+        // Create a new Timer
+        Timer timer = new Timer();
+
+        timer.schedule(new TimeTaskManager(), 1000, 2000);
+        // After which, you might want to cancel the timer
+        try {
+            Thread.sleep(10000); // Main thread sleeps for 10 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        timer.cancel();
 
     }
 
