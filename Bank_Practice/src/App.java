@@ -95,6 +95,18 @@ public class App {
 
         arrayListClass.dynamicArrayListAccount();
 
+
+        ///Testing a inner class
+         // Create an instance of the outer class
+         OuterAndInnerClassTesting outerInstance = new OuterAndInnerClassTesting();
+        
+         // Use the outer class instance to create an instance of the inner class
+         OuterAndInnerClassTesting.TestingInnerClass innerInstance = outerInstance.new TestingInnerClass();
+         
+         // Call methods on the outer and inner instances
+         outerInstance.display();
+         innerInstance.displayInfo();
+
     }
 
 }
