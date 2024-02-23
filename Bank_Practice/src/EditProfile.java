@@ -1,3 +1,6 @@
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
 public class EditProfile<T> {
     T value;
 
@@ -14,8 +17,19 @@ public class EditProfile<T> {
 
         // System.out.println("Enter your new name: ");
         System.out.println("Enter your new value!: ");
+        // console command may cause some issues while running including mySelf!!!
+        // String newName = System.console().readLine();
+        Scanner scanner = new Scanner(System.in);
+        String newName="";
+        // String newName = scanner.nextLine();
+        
+        try {
+            newName = scanner.nextLine();
+        } catch (NoSuchElementException e) {
+            System.err.println(
+                    "Failed to read input. Please run the program in a console that supports interactive input.");
+        }
 
-        String newName = System.console().readLine();
         // we need to implement the correct condition.
         if ((value instanceof String && newName.length() > 0)
                 || (value instanceof Integer && newName.matches("\\d*"))) {
@@ -27,6 +41,9 @@ public class EditProfile<T> {
         // if (newName.length() > 0) {
         // account.changeToNewName(newName);
         // }
+
+        scanner.close(); // Close the scanner
+
     }
 
 }

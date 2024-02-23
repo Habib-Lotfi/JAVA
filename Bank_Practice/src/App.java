@@ -86,8 +86,15 @@ public class App {
         CheckingPatterns checkPattern = new CheckingPatterns();
         checkPattern.display();
         checkPattern.patternMatchChecking();
-        Character[] genericArray = {'I','t',' ','i','s',' ','a',' ','G','E','N','E','R','I','C',' ','a','r','r','a','y'};
+        Character[] genericArray = { 'I', 't', ' ', 'i', 's', ' ', 'a', ' ', 'G', 'E', 'N', 'E', 'R', 'I', 'C', ' ',
+                'a', 'r', 'r', 'a', 'y' };
         CheckingPatterns.printArray(genericArray);
+
+        ArrayListClass arrayListClass = new ArrayListClass();
+        arrayListClass.dynamicArrayList();
+
+        arrayListClass.dynamicArrayListAccount();
+
     }
 
 }
