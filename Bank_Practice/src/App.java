@@ -1,4 +1,5 @@
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -109,16 +110,71 @@ public class App {
 
         // TimeTask method
         // Create a new Timer
-        Timer timer = new Timer();
+        Timer timer1 = new Timer();
 
-        timer.schedule(new TimeTaskManager(), 1000, 2000);
+        timer1.schedule(new TimeTaskManager(), 1000, 2000);
         // After which, you might want to cancel the timer
         try {
             Thread.sleep(10000); // Main thread sleeps for 10 seconds
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        timer.cancel();
+        timer1.cancel();
+        ///////////////////////////////////////////////////////
+        // Applying the TimerTask method in 'anonymous' mode//
+        //////////////////////////////////////////////////////
+
+        Timer timer2 = new Timer();
+
+        timer2.schedule(new TimerTask() {
+            int i;
+
+            @Override
+            public void run() {
+                if (i == 0) {
+                    System.out.println("\n++++++++++Anonymous Timer Task++++++++++++++");
+                }
+                if (i < 10) {
+                    System.out.println((i + 1) + ") Anonymous Timer testing...");
+                    i++;
+                } else {
+                    timer2.cancel(); // Cancel the timer after the 10th iteration
+                }
+            }
+        }, 1000, 2000);
+
+        /////////////////////////////////
+        Accounts anonymousAccount = new Accounts("Carl", 111L) {
+            @Override
+            public void display() {
+                System.out.println("Just checking display() method...");
+            }
+
+            @Override
+            public void changePassword() {
+                System.out.println("Just checking changePassword() method...");
+            }
+        };
+
+        anonymousAccount.display();
+        anonymousAccount.changePassword();
+
+        //// Interface Class with Anonymous ////
+        EditAccount anonymousEditAccount = new EditAccount() {
+
+            @Override
+            public void changeToNewName(String name) {
+                String newName = name;
+                System.out.println("Just testing changeToNewName() method..." + newName);
+            }
+
+            public String getCurrentName() {
+                return "Just checking! Current Name. ";
+            }
+        };
+
+        anonymousEditAccount.changeToNewName("new Name");
+        anonymousEditAccount.getCurrentName();
 
     }
 
